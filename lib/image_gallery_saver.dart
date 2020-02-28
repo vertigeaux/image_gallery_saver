@@ -26,4 +26,9 @@ class ImageGallerySaver {
     return result;
   }
 
+  static Future getStorageDirectory() async {
+    final dir = await _channel.invokeMethod('getStorageDirectory');
+    return dir;
+  }
+
 }
