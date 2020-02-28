@@ -52,18 +52,21 @@ class ImageGallerySaverPlugin(private val registrar: Registrar): MethodCallHandl
   //private fun generateFile(extension: String = ""): File {
     //val storePath =  Environment.getExternalStorageDirectory().absolutePath + File.separator + getApplicationName()
   
-  private fun getStorageDirectory(): String {
+  private fun getStorageDirectory(album: String): String {
     val storePath =  Environment.getExternalStorageDirectory().absolutePath + File.separator + getApplicationName() + File.separator + album  
     val appDir = File(storePath)
     if (!appDir.exists()) {
       appDir.mkdir()
     }
-    return appDir
+    return appDir.absolutePath
   }
   
   private fun generateFile(extension: String = "", name: String = "", album: String = ""): File {
-    val appDir = getStorageDirectory()
-    //var fileName = System.currentTimeMillis().toString()
+    val storePath =  Environment.getExternalStorageDirectory().absolutePath + File.separator + getApplicationName() + File.separator + album
+    val appDir = File(storePath)
+    if (!appDir.exists()) {
+      appDir.mkdir()
+    }
     var fileName = name
     if (extension.isNotEmpty()) {
       fileName += ("." + extension)
