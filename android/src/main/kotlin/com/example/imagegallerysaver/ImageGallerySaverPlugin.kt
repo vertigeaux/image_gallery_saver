@@ -53,7 +53,7 @@ class ImageGallerySaverPlugin(private val registrar: Registrar): MethodCallHandl
     //val storePath =  Environment.getExternalStorageDirectory().absolutePath + File.separator + getApplicationName()
   
   private fun getStorageDirectory(album: String): String {
-    val storePath =  Environment.getExternalStorageDirectory().absolutePath + File.separator + getApplicationName() + File.separator + album  
+    val storePath =  Environment.getExternalStorageDirectory().absolutePath + File.separator + getApplicationName()
     val appDir = File(storePath)
     if (!appDir.exists()) {
       appDir.mkdir()
