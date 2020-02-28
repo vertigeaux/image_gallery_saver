@@ -17,10 +17,12 @@ class ImageGallerySaver {
   }
 
   /// Save the PNG，JPG，JPEG image or video located at [file] to the local device media gallery.
-  static Future saveFile(String file) async {
+  //static Future saveFile(String file) async {
+  static Future saveFile(String file, String fileName, String albumName) async {
     assert(file != null);
     final result =
-    await _channel.invokeMethod('saveFileToGallery', file);
+    //await _channel.invokeMethod('saveFileToGallery', file);
+      await _channel.invokeMethod('saveFileToGallery', {'file' : file, 'fileName' : fileName, 'albumName' : albumName});
     return result;
   }
 
